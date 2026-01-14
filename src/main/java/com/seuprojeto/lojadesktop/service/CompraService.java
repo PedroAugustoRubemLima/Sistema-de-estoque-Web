@@ -1,37 +1,40 @@
 package com.seuprojeto.lojadesktop.service;
 
 import com.seuprojeto.lojadesktop.model.Compra;
+import com.seuprojeto.lojadesktop.model.ComPro;
+import com.seuprojeto.lojadesktop.model.Produto;
+import com.seuprojeto.lojadesktop.repository.ComProRepository;
 import com.seuprojeto.lojadesktop.repository.CompraRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.seuprojeto.lojadesktop.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CompraService {
 
-    @Autowired
-    private CompraRepository compraRepository;
+    private final CompraRepository compraRepository;
+    private final ProdutoRepository produtoRepository;
+    private final ComProRepository comProRepository;
 
-    public List<Compra> findAll() {
-        return compraRepository.findAll();
+    public CompraService(CompraRepository compraRepository,
+                         ProdutoRepository produtoRepository,
+                         ComProRepository comProRepository) {
+        this.compraRepository = compraRepository;
+        this.produtoRepository = produtoRepository;
+        this.comProRepository = comProRepository;
     }
 
-    public Optional<Compra> findById(Integer id) {
-        return compraRepository.findById(id);
-    }
+    public Compra registrarCompra(Compra compra) {
+        Compra salva = compraRepository.save(compra);
 
-    public Compra save(Compra compra) {
-        return compraRepository.save(compra);
-    }
+        for (ComPro cp : comProRepository.findAll()) {
+            Produto produto = cp.getProduto();
+            produto.setQuantidade(
+                    produto.getQuantidade() + cp.getQuantidade()
+            );
+            produtoRepository.save(produto);
+        }
 
-    public void deleteById(Integer id) {
-        compraRepository.deleteById(id);
-    }
-
-    public List<Compra> findByDataBetween(LocalDate dataInicio, LocalDate dataFim) {
-        return compraRepository.findByDataBetween(dataInicio, dataFim);
+        return salva;
     }
 }
+

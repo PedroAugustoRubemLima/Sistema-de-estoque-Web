@@ -1,71 +1,69 @@
 package com.seuprojeto.lojadesktop.model;
 
-import com.seuprojeto.lojadesktop.util.CryptoUtil;
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente")
-    private Integer id;
+    private Integer idCliente;
 
-    @Column(name = "cpf", length = 200)
-    private String cpf;
-
-    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
-
-    @Column(name = "telefone", length = 200)
+    private String cpf;
     private String telefone;
+    private String email;
+    private Boolean ativo = true;
 
-    @Column(name = "data_criacao", updatable = false)
-    private LocalDateTime dataCriacao;
+    public Cliente() {
+    }
 
-    @Column(name = "data_atualizacao")
-    private LocalDateTime dataAtualizacao;
+    public Integer getIdCliente() {
+        return idCliente;
+    }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public String getCpf() {
-        return cpf != null ? CryptoUtil.decrypt(cpf) : null;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.cpf = (cpf != null && !cpf.isBlank()) ? CryptoUtil.encrypt(cpf) : null;
+        this.cpf = cpf;
     }
 
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
     public String getTelefone() {
-        return telefone != null ? CryptoUtil.decrypt(telefone) : null;
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = (telefone != null && !telefone.isBlank()) ? CryptoUtil.encrypt(telefone) : null;
+        this.telefone = telefone;
     }
 
-    public LocalDateTime getDataCriacao() { return dataCriacao; }
-    public LocalDateTime getDataAtualizacao() { return dataAtualizacao; }
-
-    @PrePersist
-    public void onCreate() {
-        dataCriacao = LocalDateTime.now();
-        dataAtualizacao = dataCriacao;
+    public String getEmail() {
+        return email;
     }
 
-    @PreUpdate
-    public void onUpdate() {
-        dataAtualizacao = LocalDateTime.now();
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return nome + (getCpf() != null && !getCpf().isEmpty() ? " (" + getCpf() + ")" : "");
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }

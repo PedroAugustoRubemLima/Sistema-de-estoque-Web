@@ -1,27 +1,24 @@
 package com.seuprojeto.lojadesktop.model;
 
-import com.seuprojeto.lojadesktop.util.CryptoUtil;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Funcionario")
+@Table(name = "funcionarios")
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_funcionario")
     private Integer idFuncionario;
 
-    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
-
-    @Column(name = "cpf", length = 200) // comprimento aumentado para suportar criptografia
     private String cpf;
+    private String cargo;
+    private String usuario;
+    private String senha;
+    private Boolean ativo = true;
 
-    @Column(name = "telefone", length = 200)
-    private String telefone;
-
-    // Getters e setters
+    public Funcionario() {
+    }
 
     public Integer getIdFuncionario() {
         return idFuncionario;
@@ -40,23 +37,42 @@ public class Funcionario {
     }
 
     public String getCpf() {
-        return cpf != null ? CryptoUtil.decrypt(cpf) : null;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        this.cpf = (cpf != null && !cpf.isBlank()) ? CryptoUtil.encrypt(cpf) : null;
+        this.cpf = cpf;
     }
 
-    public String getTelefone() {
-        return telefone != null ? CryptoUtil.decrypt(telefone) : null;
+    public String getCargo() {
+        return cargo;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = (telefone != null && !telefone.isBlank()) ? CryptoUtil.encrypt(telefone) : null;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
-    @Override
-    public String toString() {
-        return nome + (getCpf() != null && !getCpf().isEmpty() ? " (" + getCpf() + ")" : "");
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }

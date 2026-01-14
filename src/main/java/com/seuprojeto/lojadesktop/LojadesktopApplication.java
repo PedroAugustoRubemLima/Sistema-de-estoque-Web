@@ -1,8 +1,11 @@
 package com.seuprojeto.lojadesktop;
-import javafx.application.Application;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class LojadesktopApplication {
     public static void main(String[] args) {
-        Application.launch(JavaFxMain.class); // Chama o JavaFX
+        SpringApplication.run(LojadesktopApplication.class, args);
     }
 }

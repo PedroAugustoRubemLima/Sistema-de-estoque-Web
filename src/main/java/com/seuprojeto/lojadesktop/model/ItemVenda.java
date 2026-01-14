@@ -3,35 +3,62 @@ package com.seuprojeto.lojadesktop.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ItemVenda")
+@Table(name = "itens_venda")
 public class ItemVenda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_item_venda")
     private Integer idItemVenda;
 
     @ManyToOne
-    @JoinColumn(name = "id_venda", nullable = false)
-    private Venda venda;
-
-    @ManyToOne
-    @JoinColumn(name = "id_produto", nullable = false)
     private Produto produto;
 
-    @Column(name = "quantidade", nullable = false)
-    private Integer quantidade;
+    private Double quantidade;
+    private Double precoUnitario;
 
-    // Getters e setters
-    public Integer getIdItemVenda() { return idItemVenda; }
-    public void setIdItemVenda(Integer idItemVenda) { this.idItemVenda = idItemVenda; }
+    @ManyToOne
+    private Venda venda;
 
-    public Venda getVenda() { return venda; }
-    public void setVenda(Venda venda) { this.venda = venda; }
+    public ItemVenda() {
+    }
 
-    public Produto getProduto() { return produto; }
-    public void setProduto(Produto produto) { this.produto = produto; }
+    public Integer getIdItemVenda() {
+        return idItemVenda;
+    }
 
-    public Integer getQuantidade() { return quantidade; }
-    public void setQuantidade(Integer quantidade) { this.quantidade = quantidade; }
+    public void setIdItemVenda(Integer idItemVenda) {
+        this.idItemVenda = idItemVenda;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public Double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Double getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 }

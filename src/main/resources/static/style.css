@@ -1,0 +1,146 @@
+/* ============================
+   RESET BÁSICO
+   ============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ============================
+   BODY
+   ============================ */
+body {
+    background-color: #101a49;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* ============================
+   TÍTULOS
+   ============================ */
+h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ============================
+   FORMULÁRIOS
+   ============================ */
+form {
+    background-color: #16226b;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+form input:focus {
+    outline: 2px solid #4f6bed;
+}
+
+/* ============================
+   BOTÕES
+   ============================ */
+button {
+    padding: 10px 20px;
+    background-color: #4f6bed;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #3b56c5;
+}
+
+/* ============================
+   TABELAS
+   ============================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #16226b;
+}
+
+table thead {
+    background-color: #1f2f8f;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #2e3fa3;
+}
+
+table th {
+    color: #ffffff;
+}
+
+table td {
+    color: #e0e0e0;
+}
+
+/* ============================
+   MENSAGENS
+   ============================ */
+#mensagem {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.mensagem-sucesso {
+    color: #00ff99;
+}
+
+.mensagem-erro {
+    color: #ff4d4d;
+}
+
+/* ============================
+   GALERIA DE IMAGENS
+   ============================ */
+#galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#galeria img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid #1f2f8f;
+}
+
+/* ============================
+   RESPONSIVO
+   ============================ */
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    form {
+        width: 100%;
+    }
+}

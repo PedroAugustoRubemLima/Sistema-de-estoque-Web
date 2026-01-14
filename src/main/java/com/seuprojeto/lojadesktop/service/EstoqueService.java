@@ -1,32 +1,38 @@
 package com.seuprojeto.lojadesktop.service;
 
 import com.seuprojeto.lojadesktop.model.Estoque;
+import com.seuprojeto.lojadesktop.model.Produto;
 import com.seuprojeto.lojadesktop.repository.EstoqueRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.seuprojeto.lojadesktop.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EstoqueService {
 
-    @Autowired
-    private EstoqueRepository estoqueRepository;
+    private final EstoqueRepository estoqueRepository;
+    private final ProdutoRepository produtoRepository;
 
-    public List<Estoque> findAll() {
+    public EstoqueService(EstoqueRepository estoqueRepository,
+                          ProdutoRepository produtoRepository) {
+        this.estoqueRepository = estoqueRepository;
+        this.produtoRepository = produtoRepository;
+    }
+
+    public List<Estoque> listar() {
         return estoqueRepository.findAll();
     }
 
-    public Optional<Estoque> findById(Integer id) {
-        return estoqueRepository.findById(id);
-    }
+    public void retirarEstoque(Integer produtoId, Double quantidade) {
+        Produto produto = produtoRepository.findById(produtoId).orElseThrow();
+        Estoque estoque = estoqueRepository.findByProduto(produto)
+                .orElseThrow();
 
-    public Estoque save(Estoque estoque) {
-        return estoqueRepository.save(estoque);
-    }
+        estoque.setQuantidadeAtual(
+                estoque.getQuantidadeAtual() - quantidade
+        );
 
-    public void deleteById(Integer id) {
-        estoqueRepository.deleteById(id);
+        estoqueRepository.save(estoque);
     }
 }
