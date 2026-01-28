@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Venda - Sistema de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>💰 Registrar Nova Venda</h1>
+            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="vendaForm">
+            <h2>Nova Venda</h2>
+            
+            <label for="clienteId">Cliente:</label>
+            <select id="clienteId" required>
+                <option value="">Selecione um cliente</option>
+            </select>
+            
+            <label for="funcionarioId">Funcionário:</label>
+            <select id="funcionarioId" required>
+                <option value="">Selecione um funcionário</option>
+            </select>
+
+            <h3>Itens da Venda</h3>
+            <div id="itensVenda">
+                <div class="item-venda">
+                    <label for="produtoId0">Produto:</label>
+                    <select id="produtoId0" name="produtoId" required>
+                        <option value="">Selecione um produto</option>
+                    </select>
+                    
+                    <label for="quantidade0">Quantidade:</label>
+                    <input type="number" id="quantidade0" name="quantidade" step="0.01" min="0.01" required>
+                    
+                    <label for="precoUnitario0">Preço Unitário:</label>
+                    <input type="number" id="precoUnitario0" name="precoUnitario" step="0.01" min="0.01" required>
+                </div>
+            </div>
+
+            <button type="button" id="adicionarItem">➕ Adicionar Item</button>
+            <button type="submit">💾 Registrar Venda</button>
+        </form>
+
+        <div style="margin-top: 20px;">
+            <a href="historico-vendas.html" class="menu-item" style="display: inline-block;">📋 Ver Histórico de Vendas</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Sistema de Estoque - Registrar Vendas</p>
+        </div>
+    </footer>
+
+    <script src="registrar-venda.js"></script>
+</body>
+</html>

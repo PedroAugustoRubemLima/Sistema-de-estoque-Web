@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de Conexão</title>
+</head>
+<body>
+    <h1>Teste de Conexão MySQL</h1>
+    <button onclick="testar()">Testar Conexão com Banco</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function testar() {
+            try {
+                const response = await fetch('http://localhost:8081/api/test/database-info');
+                const data = await response.json();
+                document.getElementById('resultado').innerHTML = 
+                    '<h3>✅ Conexão bem-sucedida!</h3>' +
+                    '<p><strong>Banco:</strong> ' + data.databaseProductName + '</p>' +
+                    '<p><strong>URL:</strong> ' + data.url + '</p>' +
+                    '<p><strong>Usuário:</strong> ' + data.userName + '</p>';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = 
+                    '<h3>❌ Erro:</h3><p>' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

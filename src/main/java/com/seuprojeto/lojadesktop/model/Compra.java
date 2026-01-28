@@ -2,6 +2,7 @@ package com.seuprojeto.lojadesktop.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "compras")
@@ -13,6 +14,9 @@ public class Compra {
 
     private LocalDate dataCompra;
     private Double valorTotal;
+
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ComPro> itens;
 
     public Compra() {
     }
@@ -39,5 +43,13 @@ public class Compra {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<ComPro> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ComPro> itens) {
+        this.itens = itens;
     }
 }

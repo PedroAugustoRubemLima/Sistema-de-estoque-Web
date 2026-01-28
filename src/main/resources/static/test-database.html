@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Conexão - Sistema de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🔧 Teste de Conexão com Banco</h1>
+            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="background-color: #16226b; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+            <h2>Informações do Banco de Dados</h2>
+            <button onclick="testarConexao()">🔍 Testar Conexão</button>
+            <div id="resultado" style="margin-top: 20px;"></div>
+        </div>
+
+        <div style="background-color: #16226b; padding: 25px; border-radius: 8px; margin-bottom: 20px;">
+            <h2>Teste de Cadastro de Produto</h2>
+            <button onclick="testarCadastroProduto()">📦 Cadastrar Produto de Teste</button>
+            <div id="resultadoProduto" style="margin-top: 20px;"></div>
+        </div>
+
+        <div style="background-color: #16226b; padding: 25px; border-radius: 8px;">
+            <h2>Lista de Produtos</h2>
+            <button onclick="listarProdutos()">📋 Listar Produtos</button>
+            <div id="listaProdutos" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>Sistema de Estoque - Teste de Conexão</p>
+        </div>
+    </footer>
+
+    <script>
+        async function testarConexao() {
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = '<p style="color: #4f6bed;">Testando conexão...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8081/api/test/database-info');
+                const info = await response.json();
+                
+                let html = '<h3 style="color: #00ff99;">✅ Conexão bem-sucedida!</h3>';
+                html += '<table style="width: 100%; margin-top: 10px;">';
+                
+                for (const [key, value] of Object.entries(info)) {
+                    html += `<tr><td style="padding: 5px; border-bottom: 1px solid #2e3fa3;"><strong>${key}:</strong></td>`;
+                    html += `<td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">${value}</td></tr>`;
+                }
+                
+                html += '</table>';
+                resultado.innerHTML = html;
+                
+            } catch (error) {
+                resultado.innerHTML = `<p style="color: #ff4d4d;">❌ Erro: ${error.message}</p>`;
+            }
+        }
+
+        async function testarCadastroProduto() {
+            const resultado = document.getElementById('resultadoProduto');
+            resultado.innerHTML = '<p style="color: #4f6bed;">Cadastrando produto de teste...</p>';
+            
+            const produto = {
+                nome: 'Produto Teste ' + new Date().getTime(),
+                tipo: 'Teste',
+                preco: 10.50,
+                quantidade: 100,
+                dataVencimento: '2025-12-31'
+            };
+            
+            try {
+                const response = await fetch('http://localhost:8081/api/produtos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(produto)
+                });
+                
+                if (response.ok) {
+                    const produtoSalvo = await response.json();
+                    resultado.innerHTML = `
+                        <h3 style="color: #00ff99;">✅ Produto cadastrado!</h3>
+                        <p><strong>ID:</strong> ${produtoSalvo.idProduto}</p>
+                        <p><strong>Nome:</strong> ${produtoSalvo.nome}</p>
+                        <p><strong>Preço:</strong> R$ ${produtoSalvo.preco}</p>
+                        <p style="color: #4f6bed;">🔍 Verifique no MySQL Workbench!</p>
+                    `;
+                } else {
+                    const error = await response.text();
+                    resultado.innerHTML = `<p style="color: #ff4d4d;">❌ Erro: ${error}</p>`;
+                }
+            } catch (error) {
+                resultado.innerHTML = `<p style="color: #ff4d4d;">❌ Erro: ${error.message}</p>`;
+            }
+        }
+
+        async function listarProdutos() {
+            const resultado = document.getElementById('listaProdutos');
+            resultado.innerHTML = '<p style="color: #4f6bed;">Carregando produtos...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8081/api/produtos');
+                const produtos = await response.json();
+                
+                if (produtos.length === 0) {
+                    resultado.innerHTML = '<p style="color: #e0e0e0;">Nenhum produto encontrado.</p>';
+                    return;
+                }
+                
+                let html = `<h3 style="color: #00ff99;">📦 ${produtos.length} produto(s) encontrado(s)</h3>`;
+                html += '<table style="width: 100%; margin-top: 10px;">';
+                html += '<tr><th>ID</th><th>Nome</th><th>Tipo</th><th>Preço</th><th>Quantidade</th></tr>';
+                
+                produtos.forEach(p => {
+                    html += `<tr>
+                        <td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">${p.idProduto}</td>
+                        <td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">${p.nome}</td>
+                        <td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">${p.tipo}</td>
+                        <td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">R$ ${p.preco}</td>
+                        <td style="padding: 5px; border-bottom: 1px solid #2e3fa3;">${p.quantidade}</td>
+                    </tr>`;
+                });
+                
+                html += '</table>';
+                resultado.innerHTML = html;
+                
+            } catch (error) {
+                resultado.innerHTML = `<p style="color: #ff4d4d;">❌ Erro: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

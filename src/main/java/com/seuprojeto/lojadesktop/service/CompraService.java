@@ -26,7 +26,8 @@ public class CompraService {
     public Compra registrarCompra(Compra compra) {
         Compra salva = compraRepository.save(compra);
 
-        for (ComPro cp : comProRepository.findAll()) {
+        // Corrigido: Apenas produtos desta compra específica
+        for (ComPro cp : salva.getItens()) {
             Produto produto = cp.getProduto();
             produto.setQuantidade(
                     produto.getQuantidade() + cp.getQuantidade()
