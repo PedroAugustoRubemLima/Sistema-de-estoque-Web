@@ -6,7 +6,7 @@ document.getElementById("retiraEstoqueForm").addEventListener("submit", async (e
 
     try {
         const response = await fetch(
-            `http://localhost:8081/api/estoque/retirar?produtoId=${produtoId}&quantidade=${quantidade}`,
+            `/api/estoque/retirar?produtoId=${produtoId}&quantidade=${quantidade}`,
             { method: "POST" }
         );
 

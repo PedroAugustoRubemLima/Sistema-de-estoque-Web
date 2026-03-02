@@ -1,5 +1,6 @@
 package com.seuprojeto.lojadesktop.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Venda {
     private Funcionario funcionario;
 
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ItemVenda> itens;
 
     public Venda() {

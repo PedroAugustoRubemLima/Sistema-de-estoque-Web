@@ -5,9 +5,11 @@ com\seuprojeto\lojadesktop\service\VendaService.class
 com\seuprojeto\lojadesktop\model\Compra.class
 com\seuprojeto\lojadesktop\repository\VendaRepository.class
 com\seuprojeto\lojadesktop\util\CryptoUtil.class
+com\seuprojeto\lojadesktop\controller\IndexController.class
 com\seuprojeto\lojadesktop\controller\AuthController.class
 com\seuprojeto\lojadesktop\model\ComPro.class
 com\seuprojeto\lojadesktop\model\Venda.class
+com\seuprojeto\lojadesktop\config\WebMvcConfig.class
 com\seuprojeto\lojadesktop\service\CompraService.class
 com\seuprojeto\lojadesktop\controller\FuncionarioController.class
 com\seuprojeto\lojadesktop\controller\TestController.class
@@ -19,6 +21,7 @@ com\seuprojeto\lojadesktop\model\Funcionario.class
 com\seuprojeto\lojadesktop\model\Produto.class
 com\seuprojeto\lojadesktop\model\Cliente.class
 com\seuprojeto\lojadesktop\service\FuncionarioService.class
+com\seuprojeto\lojadesktop\dto\ProdutoMaisVendidoDTO.class
 com\seuprojeto\lojadesktop\controller\ProdutoController.class
 com\seuprojeto\lojadesktop\controller\HistoricoVendasController.class
 com\seuprojeto\lojadesktop\repository\CompraRepository.class
@@ -34,4 +37,5 @@ com\seuprojeto\lojadesktop\LojadesktopApplication.class
 com\seuprojeto\lojadesktop\controller\ImageController.class
 com\seuprojeto\lojadesktop\controller\VendaController.class
 com\seuprojeto\lojadesktop\model\ItemVenda.class
+com\seuprojeto\lojadesktop\dto\RelatorioVendasPorPeriodoDTO.class
 com\seuprojeto\lojadesktop\service\ProdutoService.class

@@ -6,41 +6,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>👨‍💼 Cadastro de Funcionário</h1>
-            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
+
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">CADASTRO DE FUNCIONÁRIO</span>
+            </div>
+
+            <form id="funcionarioForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Nome do Funcionário" required>
+                
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" placeholder="CPF (Opcional)" required>
+                
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" placeholder="Ex: Vendedor, Gerente..." required>
+                
+                <label for="usuario">Usuário:</label>
+                <input type="text" id="usuario" placeholder="Nome de usuário para login" required>
+                
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" placeholder="Senha para login" required>
+
+                <div class="page-actions">
+                    <button type="submit" class="btn btn-green">Salvar</button>
+                    <button type="reset" class="btn btn-blue">Limpar Campos</button>
+                    <a href="menu.html" class="btn btn-gray">Cancelar</a>
+                </div>
+            </form>
+
+            <hr style="margin: 25px 0; border-color: #1f2937; opacity: 0.5;">
+
+            <div>
+                <h3 style="color: #e5e7eb; margin-bottom: 10px;">Funcionários Cadastrados</h3>
+                <input type="text" placeholder="Pesquisar por nome ou CPF..." style="width: 100%; padding: 10px; border-radius: 999px; border: none; margin-bottom: 15px;">
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Cargo</th>
+                            <th>Ação</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 20px; color: #6b7280;">
+                                Não há conteúdo na tabela
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <div class="container">
-        <form id="funcionarioForm">
-            <h2>Novo Funcionário</h2>
-            
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" placeholder="Nome completo do funcionário" required>
-            
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" placeholder="000.000.000-00" required>
-            
-            <label for="cargo">Cargo:</label>
-            <input type="text" id="cargo" placeholder="Ex: Vendedor, Gerente, etc." required>
-            
-            <label for="usuario">Usuário:</label>
-            <input type="text" id="usuario" placeholder="Nome de usuário para login" required>
-            
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" placeholder="Senha para login" required>
-
-            <button type="submit">💾 Salvar Funcionário</button>
-        </form>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Sistema de Estoque - Cadastro de Funcionários</p>
-        </div>
-    </footer>
 
     <script src="funcionario-cadastro.js"></script>
 </body>

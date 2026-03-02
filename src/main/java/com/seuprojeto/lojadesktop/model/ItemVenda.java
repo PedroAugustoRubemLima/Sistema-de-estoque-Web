@@ -1,5 +1,6 @@
 package com.seuprojeto.lojadesktop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class ItemVenda {
     private Double precoUnitario;
 
     @ManyToOne
+    @JsonBackReference
     private Venda venda;
 
     public ItemVenda() {

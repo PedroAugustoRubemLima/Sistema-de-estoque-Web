@@ -6,38 +6,158 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>💰 Histórico de Vendas</h1>
-            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
-        </div>
-    </header>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
 
-    <div class="container">
-        <div style="margin-bottom: 20px;">
-            <a href="registrar-venda.html" class="menu-item" style="display: inline-block;">➕ Registrar Nova Venda</a>
-        </div>
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">HISTÓRICO E RELATÓRIOS DE VENDAS</span>
+            </div>
 
-        <table border="1">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Data</th>
-                <th>Cliente</th>
-                <th>Funcionário</th>
-                <th>Total</th>
-            </tr>
-            </thead>
-            <tbody id="tabelaVendas">
-            </tbody>
-        </table>
+            <div class="tabs">
+                <button id="tab-detalhado-btn" class="tab active">Detalhado</button>
+                <button id="tab-periodo-btn" class="tab inactive">Relatório por Período</button>
+                <button id="tab-produtos-btn" class="tab inactive">Produtos Mais Vendidos</button>
+                <button id="tab-estoque-btn" class="tab inactive">Relatórios de Estoque</button>
+            </div>
+
+            <!-- Aba 1: Histórico Detalhado -->
+            <div id="tab-detalhado" class="tab-content active">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Funcionário</th>
+                            <th>Data</th>
+                            <th>Valor Total</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaDetalhado">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="page-actions space-between" style="margin-top: 18px; padding: 0 18px 10px 18px;">
+                    <a href="menu.html" class="btn btn-gray">Voltar</a>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="registrar-venda.html" class="btn btn-blue">Registrar Nova Venda</a>
+                        <button id="btn-detalhado-pdf" class="btn btn-green" type="button">Gerar PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba 2: Relatório por Período -->
+            <div id="tab-periodo" class="tab-content">
+                <div style="padding: 0 18px 10px 18px;">
+                    <label for="dataInicialPeriodo" style="margin-right: 6px;">Data Inicial:</label>
+                    <input type="date" id="dataInicialPeriodo" style="max-width: 190px; margin-right: 14px;">
+                    <label for="dataFinalPeriodo" style="margin-right: 6px;">Data Final:</label>
+                    <input type="date" id="dataFinalPeriodo" style="max-width: 190px; margin-right: 14px;">
+                    <button id="btn-periodo-relatorio" class="btn btn-blue" type="button">Gerar Relatório</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Data da Venda</th>
+                            <th>Total de Vendas (R$)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaPeriodo">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="page-actions space-between" style="margin-top: 18px; padding: 0 18px 10px 18px;">
+                    <a href="menu.html" class="btn btn-gray">Voltar</a>
+                    <button id="btn-periodo-pdf" class="btn btn-green" type="button">Gerar PDF</button>
+                </div>
+            </div>
+
+            <!-- Aba 3: Produtos Mais Vendidos -->
+            <div id="tab-produtos" class="tab-content">
+                <div style="padding: 0 18px 10px 18px;">
+                    <label for="dataInicialProdutos" style="margin-right: 6px;">Data Inicial:</label>
+                    <input type="date" id="dataInicialProdutos" style="max-width: 190px; margin-right: 14px;">
+                    <label for="dataFinalProdutos" style="margin-right: 6px;">Data Final:</label>
+                    <input type="date" id="dataFinalProdutos" style="max-width: 190px; margin-right: 14px;">
+                    <button id="btn-produtos-relatorio" class="btn btn-blue" type="button">Gerar Relatório</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Tipo</th>
+                            <th>Qtd. Vendida (Caixas)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaProdutosVendidos">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="page-actions space-between" style="margin-top: 18px; padding: 0 18px 10px 18px;">
+                    <a href="menu.html" class="btn btn-gray">Voltar</a>
+                    <button id="btn-produtos-pdf" class="btn btn-green" type="button">Gerar PDF</button>
+                </div>
+            </div>
+
+            <!-- Aba 4: Relatórios de Estoque -->
+            <div id="tab-estoque" class="tab-content">
+                <div style="padding: 0 18px 18px 18px;">
+                    <h3 style="color: #e5e7eb; margin-bottom: 6px;">Produtos com Baixo Estoque:</h3>
+                    <label for="limiteBaixoEstoque" style="margin-right: 6px;">Limite (KG):</label>
+                    <input type="number" id="limiteBaixoEstoque" placeholder="Ex: 50.0" style="max-width: 140px; margin-right: 10px;">
+                    <button id="btn-baixo-estoque-relatorio" class="btn btn-blue" type="button">Gerar Relatório</button>
+                    <button id="btn-baixo-estoque-pdf" class="btn btn-green" type="button">Gerar PDF</button>
+                </div>
+
+                <div class="table-wrapper" style="margin-bottom: 20px;">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Tipo</th>
+                            <th>Qtd. Atual (KG)</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaBaixoEstoque">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="padding: 0 18px 18px 18px;">
+                    <h3 style="color: #e5e7eb; margin-bottom: 6px;">Produtos Próximos do Vencimento:</h3>
+                    <label for="diasParaVencer" style="margin-right: 6px;">Dias para Vencer:</label>
+                    <input type="number" id="diasParaVencer" placeholder="Ex: 7" style="max-width: 140px; margin-right: 10px;">
+                    <button id="btn-proximos-relatorio" class="btn btn-blue" type="button">Gerar Relatório</button>
+                    <button id="btn-proximos-pdf" class="btn btn-green" type="button">Gerar PDF</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Tipo</th>
+                            <th>Data Vencimento</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelaProximosVencimento">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="page-actions" style="margin-top: 18px; padding: 0 18px 10px 18px;">
+                    <a href="menu.html" class="btn btn-gray">Voltar</a>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Sistema de Estoque - Histórico de Vendas</p>
-        </div>
-    </footer>
 
     <script src="historico-vendas.js"></script>
 </body>

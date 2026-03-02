@@ -7,67 +7,65 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Sistema de Estoque - Loja Desktop</h1>
-            <p>Bem-vindo ao sistema de gerenciamento de estoque</p>
-        </div>
-    </header>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
 
-    <div class="container">
-        <nav class="menu-principal">
-            <div class="menu-section">
-                <h3>📦 Produtos</h3>
-                <a href="produto-listagem.html" class="menu-item">Listar Produtos</a>
-                <a href="produto-cadastro.html" class="menu-item">Cadastrar Produto</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>👥 Clientes</h3>
-                <a href="cliente-cadastro.html" class="menu-item">Cadastrar Cliente</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>👨‍💼 Funcionários</h3>
-                <a href="funcionario-cadastro.html" class="menu-item">Cadastrar Funcionário</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>📊 Estoque</h3>
-                <a href="retira-estoque.html" class="menu-item">Retirar Estoque</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>💰 Vendas</h3>
-                <a href="registrar-venda.html" class="menu-item">Registrar Venda</a>
-                <a href="historico-vendas.html" class="menu-item">Histórico de Vendas</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>🖼️ Imagens</h3>
-                <a href="image-gallery.html" class="menu-item">Galeria de Imagens</a>
-            </div>
-
-            <div class="menu-section">
-                <h3>🛠️ Ferramentas</h3>
-                <a href="test-database.html" class="menu-item">🔧 Testar Conexão MySQL</a>
-                <p style="font-size: 12px; color: #e0e0e0; margin-top: 10px;">
-                    💡 <strong>Banco atual:</strong> MySQL (estoque_jb)<br>
-                    📊 Dados visíveis no MySQL Workbench
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">MENU PRINCIPAL</span>
+                <p style="margin-top: 12px; color: #e5e7eb;">
+                    Escolha uma das opções abaixo para trabalhar com o sistema.
                 </p>
             </div>
 
-            <div class="menu-section">
-                <h3>🔐 Sistema</h3>
-                <a href="index.html" class="menu-item">Logout</a>
-            </div>
-        </nav>
-    </div>
+            <nav class="menu-principal">
+                <div class="menu-section">
+                    <h3>Produtos</h3>
+                    <a href="produto-listagem.html" class="menu-item">Listar Produtos</a>
+                    <a href="produto-cadastro.html" class="menu-item">Cadastrar Produto</a>
+                </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>Sistema desenvolvido com Spring Boot + MySQL Database</p>
+                <div class="menu-section">
+                    <h3>Clientes</h3>
+                    <a href="cliente-cadastro.html" class="menu-item">Cadastro de Clientes</a>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Funcionários</h3>
+                    <a href="funcionario-cadastro.html" class="menu-item">Cadastro de Funcionários</a>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Estoque</h3>
+                    <a href="retira-estoque.html" class="menu-item">Retirada de Estoque</a>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Vendas</h3>
+                    <a href="registrar-venda.html" class="menu-item">Registrar Venda</a>
+                    <a href="historico-vendas.html" class="menu-item">Histórico de Vendas</a>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Imagens</h3>
+                    <a href="image-gallery.html" class="menu-item">Galeria de Imagens</a>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Ferramentas</h3>
+                    <a href="test-database.html" class="menu-item">Testar Conexão MySQL</a>
+                    <p style="font-size: 12px; color: #e0e0e0; margin-top: 10px;">
+                        <strong>Banco atual:</strong> MySQL (estoque_jb)<br>
+                        Dados visíveis no MySQL Workbench
+                    </p>
+                </div>
+
+                <div class="menu-section">
+                    <h3>Sistema</h3>
+                    <a href="index.html" class="menu-item">Logout</a>
+                </div>
+            </nav>
         </div>
-    </footer>
+    </div>
 </body>
 </html>

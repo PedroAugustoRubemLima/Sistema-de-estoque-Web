@@ -6,45 +6,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>📦 Cadastro de Produto</h1>
-            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
-        </div>
-    </header>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
 
-    <div class="container">
-        <form id="produtoForm">
-            <h2>Novo Produto</h2>
-            
-            <label for="nome">Nome do Produto:</label>
-            <input type="text" id="nome" placeholder="Nome do produto" required>
-            
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" placeholder="Tipo do produto" required>
-            
-            <label for="preco">Preço:</label>
-            <input type="number" id="preco" placeholder="Preço" step="0.01" min="0" required>
-            
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" placeholder="Quantidade inicial" step="0.01" min="0" required>
-            
-            <label for="dataVencimento">Data de Vencimento:</label>
-            <input type="date" id="dataVencimento" required>
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">NOVO REGISTRO DE PRODUTO</span>
+            </div>
 
-            <button type="submit">💾 Salvar Produto</button>
-        </form>
+            <form id="produtoForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Nome do Produto" required>
+                
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" placeholder="Preço do Produto" step="0.01" min="0" required>
+                
+                <label for="tipo">Categoria:</label>
+                <input type="text" id="tipo" placeholder="Tipo do Produto" required>
+                
+                <label for="quantidade">Quantidade (KG):</label>
+                <input type="number" id="quantidade" placeholder="Quantidade em KG (inteiro)" step="0.01" min="0" required>
+                
+                <label for="dataVencimento">Data Vencimento:</label>
+                <input type="date" id="dataVencimento" required>
 
-        <div style="margin-top: 20px;">
-            <a href="produto-listagem.html" class="menu-item" style="display: inline-block;">📋 Ver Lista de Produtos</a>
+                <div class="page-actions space-between">
+                    <button type="submit" class="btn btn-green">SALVAR</button>
+                    <span style="color: #e5e7eb; font-style: italic;">Mensagem de status aparecerá aqui</span>
+                    <a href="menu.html" class="btn btn-gray">Voltar</a>
+                </div>
+            </form>
         </div>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Sistema de Estoque - Cadastro de Produtos</p>
-        </div>
-    </footer>
 
     <script src="produto-cadastro.js"></script>
 </body>

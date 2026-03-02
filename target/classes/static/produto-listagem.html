@@ -6,39 +6,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>📦 Lista de Produtos</h1>
-            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
-        </div>
-    </header>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
 
-    <div class="container">
-        <div style="margin-bottom: 20px;">
-            <a href="produto-cadastro.html" class="menu-item" style="display: inline-block;">+ Cadastrar Novo Produto</a>
-        </div>
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">LISTA DE PRODUTOS</span>
+            </div>
 
-        <table border="1">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Ações</th>
-            </tr>
-            </thead>
-            <tbody id="tabelaProdutos">
-            </tbody>
-        </table>
+            <div class="page-actions space-between">
+                <a href="menu.html" class="btn btn-gray">Voltar</a>
+                <a href="produto-cadastro.html" class="btn btn-green">+ Cadastrar Novo Produto</a>
+            </div>
+
+            <div class="table-wrapper" style="margin-top: 20px;">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Preço</th>
+                        <th>Quantidade (KG)</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tabelaProdutos">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Sistema de Estoque - Lista de Produtos</p>
-        </div>
-    </footer>
 
     <script src="produto-listagem.js"></script>
 </body>

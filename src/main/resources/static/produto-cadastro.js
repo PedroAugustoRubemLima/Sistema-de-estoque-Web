@@ -10,7 +10,7 @@ document.getElementById("produtoForm").addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:8081/api/produtos", {
+        const response = await fetch("/api/produtos", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(produto)

@@ -1,5 +1,5 @@
 async function carregarImagens() {
-    const response = await fetch("http://localhost:8081/api/imagens");
+    const response = await fetch("/api/imagens");
     const imagens = await response.json();
 
     const galeria = document.getElementById("galeria");

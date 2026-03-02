@@ -2,13 +2,27 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Galeria de Imagens</title>
+    <title>Galeria de Imagens - Sistema de Estoque</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <h1>Selecione uma Imagem</h1>
+        </div>
+    </header>
 
-<h2>Galeria de Produtos</h2>
+    <div class="container">
+        <div class="page-card">
+            <div id="galeria"></div>
 
-<div id="galeria"></div>
-
+            <div class="page-actions" style="justify-content: flex-end;">
+                <button class="btn-green">Selecionar</button>
+                <a href="menu.html">
+                    <button type="button" class="btn-gray">Cancelar</button>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

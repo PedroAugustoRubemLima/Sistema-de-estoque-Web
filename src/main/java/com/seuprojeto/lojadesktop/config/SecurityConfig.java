@@ -3,9 +3,11 @@ package com.seuprojeto.lojadesktop.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
@@ -13,16 +15,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/api/login",
-                                "/view/**",
-                                "/css/**",
-                                "/js/**",
-                                "/**"
-                        ).permitAll()
+                        .anyRequest().permitAll()
                 )
                 .formLogin(form -> form.disable())
-                .httpBasic(basic -> basic.disable());
+                .httpBasic(basic -> basic.disable())
+                .headers(headers -> headers.frameOptions(f -> f.sameOrigin()));
 
         return http.build();
     }

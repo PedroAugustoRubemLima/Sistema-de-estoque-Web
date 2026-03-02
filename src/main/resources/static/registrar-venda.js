@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function carregarClientes() {
     try {
-        const response = await fetch('http://localhost:8081/api/clientes');
+        const response = await fetch('/api/clientes');
         const clientes = await response.json();
         
         const select = document.getElementById('clienteId');
@@ -26,7 +26,7 @@ async function carregarClientes() {
 
 async function carregarFuncionarios() {
     try {
-        const response = await fetch('http://localhost:8081/api/funcionarios');
+        const response = await fetch('/api/funcionarios');
         const funcionarios = await response.json();
         
         const select = document.getElementById('funcionarioId');
@@ -43,7 +43,7 @@ async function carregarFuncionarios() {
 
 async function carregarProdutos() {
     try {
-        const response = await fetch('http://localhost:8081/api/produtos');
+        const response = await fetch('/api/produtos');
         const produtos = await response.json();
         
         // Atualizar todos os selects de produto
@@ -145,7 +145,7 @@ document.getElementById('vendaForm').addEventListener('submit', async (e) => {
     };
     
     try {
-        const response = await fetch('http://localhost:8081/api/vendas', {
+        const response = await fetch('/api/vendas', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(venda)

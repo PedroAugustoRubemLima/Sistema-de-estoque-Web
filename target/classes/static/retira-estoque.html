@@ -6,36 +6,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>📊 Retirada de Estoque</h1>
-            <p><a href="menu.html">← Voltar ao Menu Principal</a></p>
-        </div>
-    </header>
+    <div class="page-layout">
+        <div class="page-brand">JB LATICÍNIOS</div>
 
-    <div class="container">
-        <form id="retiraEstoqueForm">
-            <h2>Retirar do Estoque</h2>
-            
-            <label for="produtoId">ID do Produto:</label>
-            <input type="number" id="produtoId" placeholder="ID do produto" required>
-            
-            <label for="quantidade">Quantidade a Retirar:</label>
-            <input type="number" id="quantidade" placeholder="Quantidade" step="0.01" min="0.01" required>
+        <div class="page-card">
+            <div class="page-header-center">
+                <span class="page-pill-title">RETIRADA DE ESTOQUE</span>
+                <p style="margin-top: 8px; color: #e5e7eb;">Produto selecionado aparecerá aqui</p>
+            </div>
 
-            <button type="submit">📤 Retirar do Estoque</button>
-        </form>
+            <form id="retiraEstoqueForm">
+                <label for="produtoId">ID do Produto:</label>
+                <input type="number" id="produtoId" placeholder="ID do produto" required>
+                
+                <label for="quantidade">Quantidade (caixas):</label>
+                <input type="number" id="quantidade" placeholder="Ex: 2" step="0.01" min="0.01" required>
 
-        <div style="margin-top: 20px;">
-            <a href="produto-listagem.html" class="menu-item" style="display: inline-block;">📋 Ver Lista de Produtos</a>
+                <div class="page-actions space-between">
+                    <a href="produto-listagem.html" class="btn btn-blue">Adicionar Produto</a>
+                    <button type="submit" class="btn btn-green">Finalizar Venda</button>
+                </div>
+            </form>
+
+            <div style="margin-top: 25px;">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade (kg)</th>
+                            <th>Ação</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colspan="3" style="text-align: center; padding: 20px; color: #6b7280;">
+                                Não há conteúdo na tabela
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page-actions" style="margin-top: 20px;">
+                <a href="menu.html" class="btn btn-gray">Voltar</a>
+                <a href="historico-vendas.html" class="btn btn-gray">Histórico de Vendas</a>
+                <a href="cliente-cadastro.html" class="btn btn-yellow">Cadastrar Cliente</a>
+                <a href="funcionario-cadastro.html" class="btn btn-yellow">Cadastrar Funcionário</a>
+            </div>
         </div>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <p>Sistema de Estoque - Retirada de Estoque</p>
-        </div>
-    </footer>
 
     <script src="retira-estoque.js"></script>
 </body>

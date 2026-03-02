@@ -1,5 +1,5 @@
 async function carregarProdutos() {
-    const response = await fetch("http://localhost:8081/api/produtos");
+    const response = await fetch("/api/produtos");
     const produtos = await response.json();
 
     const tabela = document.getElementById("tabelaProdutos");
@@ -23,7 +23,7 @@ async function carregarProdutos() {
 }
 
 async function deletar(id) {
-    await fetch(`http://localhost:8081/api/produtos/${id}`, {
+    await fetch(`/api/produtos/${id}`, {
         method: "DELETE"
     });
     carregarProdutos();

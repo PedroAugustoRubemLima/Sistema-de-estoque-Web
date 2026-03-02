@@ -3,6 +3,7 @@ C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seu
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\HistoricoVendasController.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\repository\FuncionarioRepository.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\EstoqueController.java
+C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\dto\ProdutoMaisVendidoDTO.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\service\EstoqueService.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\model\ItemVenda.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\repository\VendaRepository.java
@@ -12,11 +13,13 @@ C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seu
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\repository\ProdutoRepository.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\ClienteController.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\service\VendaService.java
+C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\config\WebMvcConfig.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\service\AuthService.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\LojadesktopApplication.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\model\Venda.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\model\Funcionario.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\service\ProdutoService.java
+C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\dto\RelatorioVendasPorPeriodoDTO.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\config\SecurityConfig.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\model\Compra.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\model\Estoque.java
@@ -34,4 +37,5 @@ C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seu
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\repository\CompraRepository.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\util\HashUtil.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\AuthController.java
+C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\IndexController.java
 C:\Users\Augusto\Desktop\Nova pasta\Sistema-de-estoque-Web\src\main\java\com\seuprojeto\lojadesktop\controller\ProdutoController.java

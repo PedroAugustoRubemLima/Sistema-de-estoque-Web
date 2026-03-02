@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste de Venda - Debug</title>
+</head>
+<body>
+    <h1>Teste de Venda</h1>
+    <button onclick="testarVenda()">Testar Venda</button>
+    <pre id="resultado"></pre>
+
+    <script>
+        async function testarVenda() {
+            const venda = {
+                cliente: { idCliente: 1 },
+                funcionario: { idFuncionario: 1 },
+                itens: [
+                    {
+                        produto: { idProduto: 1 },
+                        quantidade: 2,
+                        precoUnitario: 10.50
+                    }
+                ]
+            };
+
+            console.log('Enviando venda:', JSON.stringify(venda, null, 2));
+
+            try {
+                const response = await fetch('/api/vendas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(venda)
+                });
+
+                console.log('Status:', response.status);
+                
+                const text = await response.text();
+                console.log('Resposta:', text);
+                
+                document.getElementById('resultado').textContent = 
+                    `Status: ${response.status}\n\nResposta:\n${text}`;
+
+            } catch (error) {
+                console.error('Erro:', error);
+                document.getElementById('resultado').textContent = 
+                    `Erro: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

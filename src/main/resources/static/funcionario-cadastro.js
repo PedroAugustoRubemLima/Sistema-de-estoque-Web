@@ -1,3 +1,9 @@
+// Carregar funcionários ao iniciar a página
+document.addEventListener('DOMContentLoaded', function() {
+    carregarFuncionarios();
+});
+
+// Cadastrar funcionário
 document.getElementById("funcionarioForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -10,7 +16,7 @@ document.getElementById("funcionarioForm").addEventListener("submit", async (e) 
     };
 
     try {
-        const response = await fetch("http://localhost:8081/api/funcionarios", {
+        const response = await fetch("/api/funcionarios", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(funcionario)
@@ -19,6 +25,7 @@ document.getElementById("funcionarioForm").addEventListener("submit", async (e) 
         if (response.ok) {
             alert("Funcionário cadastrado com sucesso!");
             e.target.reset();
+            carregarFuncionarios(); // Recarregar lista
         } else {
             const error = await response.text();
             alert("Erro ao cadastrar funcionário: " + error);
@@ -28,3 +35,62 @@ document.getElementById("funcionarioForm").addEventListener("submit", async (e) 
         console.error("Erro:", error);
     }
 });
+
+// Carregar lista de funcionários
+async function carregarFuncionarios() {
+    try {
+        const response = await fetch("/api/funcionarios");
+        const funcionarios = await response.json();
+        
+        const tbody = document.querySelector(".table-wrapper tbody");
+        
+        if (funcionarios.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align: center; padding: 20px; color: #6b7280;">
+                        Nenhum funcionário cadastrado
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tbody.innerHTML = funcionarios.map(func => `
+            <tr>
+                <td>${func.nome}</td>
+                <td>${func.cpf || '-'}</td>
+                <td>${func.cargo || '-'}</td>
+                <td>
+                    <button onclick="excluirFuncionario(${func.idFuncionario})" class="btn btn-red" style="padding: 5px 10px; font-size: 12px;">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+        
+    } catch (error) {
+        console.error("Erro ao carregar funcionários:", error);
+    }
+}
+
+// Excluir funcionário
+async function excluirFuncionario(id) {
+    if (!confirm("Deseja realmente excluir este funcionário?")) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/funcionarios/${id}`, {
+            method: "DELETE"
+        });
+        
+        if (response.ok) {
+            alert("Funcionário excluído com sucesso!");
+            carregarFuncionarios();
+        } else {
+            alert("Erro ao excluir funcionário");
+        }
+    } catch (error) {
+        alert("Erro de conexão: " + error.message);
+    }
+}
